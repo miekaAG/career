@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    
+    <section>
+        <h2>Personal Information</h2>
+        <p><strong>User ID:</strong> <span id="user-id">2022456812</span></p>
+        <p><strong>Full Name:</strong> <span id="full-name">Amirul Haziq Bin Badrul</span></p>
+        <p><strong>Email:</strong> <span id="email">amziqB@gmail.com</span></p>
+    </section>
+    
+    <hr>
+
+    <section>
+        <h2>Edit Profile</h2>
+        <form action="save-profile.html" method="POST">
+  
+            <label for="edit-name">Full Name:</label>
+            <input type="text" id="edit-name" name="name" placeholder="Enter your new full name" required>
+            <br><br>
+            <label for="edit-email">Email:</label>
+            <input type="email" id="edit-email" name="email" placeholder="Enter new email address" required>
+            <br><br>
+            <label for="edit-password">Password:</label>
+            <input type="password" id="edit-password" name="password" placeholder="Enter a new password">
+            <br><br>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </section>
+</body>
+</html>
 
