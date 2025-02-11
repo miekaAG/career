@@ -8,63 +8,67 @@
     <title>Welcome Page</title>  
     <style>
         body {
-            background-image: url('bgc1.jpg');
-            background-size: cover;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #2c3e50, #2980b9); /* Urban Blue Gradient */
+            color: #ffffff; /* White Font */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            text-align: center;
         }
+
         .container {
-            max-width: 2000px;
-            padding: 50px;
+            background: linear-gradient(to bottom, #34495e, #2c3e50); /* Dark Urban Gradient */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8); 
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
-            position: relative;
+            width: 400px;
         }
+
         h1 {
-            color: #000000;
-            font-size: 36px;
-            font-family: 'Garamond', cursive; 
             margin-bottom: 20px;
+            color: #ecf0f1; /* Light Gray */
+            font-size: 2em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
         }
+
         h2 {
-            color: #000000;
-            font-family: 'Garamond', cursive; 
             margin-bottom: 20px;
+            color: #ecf0f1; /* Light Gray */
+            font-size: 1.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
         }
-        .button {
-            background-color: #4d88ff ; 
-            color: white;
-            padding: 12px 24px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 18px;
+
+        a.button {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
             border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
             cursor: pointer;
-            display: inline-block;
-            margin-top: 20px;
+            text-decoration: none;
+            color: #ffffff; /* White text */
+            background: #27ae60; /* Green Button */
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        .button:hover {
-            background-color: #002b80; 
+
+        a.button:hover {
+            background: #1e8449; /* Darker Green */
+            transform: scale(1.05);
         }
+
         .time {
-            position: absolute;
-            top: 8px;
-            right: 16px;
-            font-size: 18px;
-            color: #333;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #ecf0f1; /* Light Gray */
         }
-       
     </style>
     <script>
         window.onload = function() {
