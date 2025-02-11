@@ -22,10 +22,9 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String userType = request.getParameter("Type"); // Getting the selected type (User/Admin)
 
         try {
-            if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+            if (username.length() == 0 || password.length() == 0) {
                 out.println("<html><body>");
                 out.println("<script>");
                 out.println("alert('Username and password are required.');");
@@ -38,21 +37,10 @@ public class LoginServlet extends HttpServlet {
             if (validateLogin(username, password)) {
                 // Create a session
                 HttpSession session = request.getSession();
-                session.setAttribute("user", username);
+                session.setAttribute("user", username); // Use "user" as the attribute name
 
-                // Redirect based on user type
-                if ("User".equalsIgnoreCase(userType)) {
-                    response.sendRedirect("Userprofile.jsp");  // Redirect Users to UserProfile.jsp
-                } else if ("Admin".equalsIgnoreCase(userType)) {
-                    response.sendRedirect("link.jsp");  // Redirect Admins to link.jsp
-                } else {
-                    out.println("<html><body>");
-                    out.println("<script>");
-                    out.println("alert('Invalid user type selected.');");
-                    out.println("window.location.href='login.jsp';");
-                    out.println("</script>");
-                    out.println("</body></html>");
-                }
+                // Redirect to link.jsp
+                response.sendRedirect("link.jsp");
             } else {
                 out.println("<html><body>");
                 out.println("<script>");
@@ -77,10 +65,10 @@ public class LoginServlet extends HttpServlet {
             // Load the driver
             Class.forName(driver);
 
-            // Connect to the database
+            // Connect to the sample database
             Connection conn = DriverManager.getConnection(connectionString);
 
-            // Create a PreparedStatement
+            // Create a Statement
             pstmt = conn.prepareStatement("SELECT username, password FROM LOGIN WHERE username = ? AND password = ?");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -95,5 +83,3 @@ public class LoginServlet extends HttpServlet {
         return rs.next();
     }
 }
-
-
