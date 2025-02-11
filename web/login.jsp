@@ -1,85 +1,146 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
         body {
-            background-image: url('bgc1.jpg');
-            background-size: cover;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #2c3e50, #2980b9); /* Urban Blue Gradient */
+            color: #ffffff; /* White Font */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 10S0vh;
+            height: 100vh;
         }
-        .container {
-            background-color: white;
+
+        .form-container {
+            background: linear-gradient(to bottom, #34495e, #2c3e50); /* Dark Urban Gradient */
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
             text-align: center;
-            max-width: 400px;
-            width: 100%;
+            width: 400px;
         }
-        .container h1 {
-            color: #000000;
-            font-size: 36px;
-            font-family: 'Garamond', cursive; 
+
+        .form-container h2 {
             margin-bottom: 20px;
+            color: #ecf0f1; /* Light Gray */
+            font-size: 1.8em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
         }
-        .container h2 {
+
+        .form-group {
             margin-bottom: 20px;
-            font-size: 20px;
-            color: #666;
+            text-align: left;
         }
-        .container form {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .container form label {
-            margin-bottom: 5px;
+
+        label {
+            display: block;
+            margin-bottom: 8px;
             font-weight: bold;
-            color: #333;
+            color: #ecf0f1; /* Light Gray Font */
         }
-        .container form input[type="text"],
-        .container form input[type="password"] {
-            margin-bottom: 15px;
-            padding: 10px;
+
+        input[type="text"], input[type="password"] {
             width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .container form input[type="submit"] {
-            padding: 10px;
-            background-color: #4d88ff;
-            color: white;
+            padding: 12px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
+            background-color: #ecf0f1; /* Light background */
+            color: #2c3e50; /* Dark text */
+            font-size: 1em;
+            box-sizing: border-box;
+            outline: none;
         }
-        .container form input[type="submit"]:hover {
-            background-color: #002b80;
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 2px solid #3498db; /* Bright Blue */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        input[type="submit"], input[type="reset"], .register-button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            color: #ffffff; /* White text */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"] {
+            background: #3498db; /* Bright Blue */
+        }
+
+        input[type="reset"] {
+            background: #e74c3c; /* Red */
+        }
+
+        .register-button {
+            background: #27ae60; /* Green */
+            text-decoration: none;
+            text-align: center;
+        }
+
+        input[type="submit"]:hover {
+            background: #2980b9; /* Darker Blue */
+            transform: scale(1.05);
+        }
+
+        input[type="reset"]:hover {
+            background: #c0392b; /* Darker Red */
+            transform: scale(1.05);
+        }
+
+        .register-button:hover {
+            background: #1e8449; /* Darker Green */
+            transform: scale(1.05);
+        }
+
+        .button-group a {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>CAREER PATHWAY</h1>
-        <h2>Staff Login</h2>
+    <div class="form-container">
+        <h2>CAREER PATHWAY</h2>
         <form action="LoginServlet" method="post">
-            <label for="username">Staff ID:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <input type="submit" value="Login">
+            <div class="form-group">
+                <label for="type">Type</label>
+                User<input type="radio" name="Type" value="User" />
+                Admin<input type="radio" name="Type" value="Admin" />
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="button-group">
+                <input type="submit" value="Login">
+                <input type="reset" value="Reset">
+            </div>
         </form>
+        <div style="margin-top: 15px;">
+            <a href="Register.jsp" class="register-button">Register</a>
+        </div>
     </div>
 </body>
-</html>
+</html>    
+                
+         
