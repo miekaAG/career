@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/register.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/SignupServlet.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/signup.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/progress.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/link.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/index.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/Bean/ProgressBean.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/LogoutServlet.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/RegisterServlet.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/information.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/login.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/AppointmentServlet.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/dao/AppointmentDao.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/deleteRecord.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/dao/ProgressDao.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/editInformation.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/updateAppointment.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/dao/RegisterDao.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/editAppointment.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/Bean/RegisterBean.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/TrackProgressServlet.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/appointmentList.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/progressRecord.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/LoginServlet.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/updateProgress.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/WEB-INF/web.xml</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/appointment.jsp</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/src/java/Bean/AppointmentBean.java</file>
+            <file>file:/D:/uitm/Degree/S5/CSC584/Career/web/editProgress.jsp</file>
+        </group>
+    </open-files>
+</project-private>
