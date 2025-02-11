@@ -88,7 +88,7 @@
             background: #e74c3c; /* Red */
         }
 
-        .register-button {
+        .signup-button {
             background: #27ae60; /* Green */
             text-decoration: none;
             text-align: center;
@@ -137,7 +137,7 @@
             </div>
         </form>
         <div style="margin-top: 15px;">
-            <a href="Register.jsp" class="register-button">Register</a>
+            <a href="signup.jsp" class="signup-button">Sign Up</a>
         </div>
     </div>
 </body>
