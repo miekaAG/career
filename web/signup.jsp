@@ -133,7 +133,7 @@
         <button type="submit">Sign Up</button>
     </form>
     <div style="margin-top: 15px;">
-        <a href="Login.jsp" class="back-button">Back</a>
+        <a href="index.jsp" class="back-button">Back</a>
     </div>
 </div>
 
