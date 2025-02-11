@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Candidate Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* General Styles */
         body {
@@ -15,6 +18,7 @@
             background-color: #f8f9fa;
             color: #333;
         }
+
         /* Header */
         .header {
             background-color: #007bff;
@@ -28,6 +32,13 @@
         .header h1 {
             font-size: 24px;
         }
+
+        /* Layout */
+        .layout {
+            display: flex;
+            flex: 1;
+        }
+
         /* Sidebar */
         .sidebar {
             background-color: #343a40;
@@ -52,24 +63,33 @@
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
+        .sidebar a i {
+            margin-right: 10px;
+        }
         .sidebar a:hover {
             background-color: #495057;
             transform: scale(1.05);
         }
+        .sidebar a.active {
+            background-color: #007bff;
+        }
+
         /* Main Content */
-        .layout {
-            display: flex;
+        .main-content {
             flex: 1;
-            justify-content: center;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            max-width: 1000px;
+            justify-content: center;
+            padding: 20px;
+            margin: auto;
+            max-width: 90%;
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            margin: auto;
-            padding: 30px;
+            text-align: center;
         }
-        /* Profile Card */
+
         .profile-card {
             width: 100%;
             max-width: 800px;
@@ -99,6 +119,11 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        .profile-card form .button-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
         .profile-card form input[type="submit"], .profile-card form input[type="reset"] {
             padding: 10px;
             border: none;
@@ -106,7 +131,6 @@
             cursor: pointer;
             font-size: 16px;
             width: 48%;
-            margin-top: 10px;
         }
         .profile-card form input[type="submit"] {
             background-color: #007bff;
@@ -116,12 +140,13 @@
             background-color: #0056b3;
         }
         .profile-card form input[type="reset"] {
-            background-color: #007bff;
+            background-color: #dc3545;
             color: white;
         }
         .profile-card form input[type="reset"]:hover {
-            background-color: #0056b3;
+            background-color: #c82333;
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .layout {
@@ -139,41 +164,47 @@
     <div class="header">
         <h1>New Candidate Registration</h1>
     </div>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <a href="register.jsp">Candidate Registration</a>
-        <a href="information.jsp">Candidate Information</a>
-        <a href="progress.jsp">Candidate Progress</a>
-        <a href="progressRecord.jsp">Progress Record</a>
-        <a href="appointment.jsp">Calendar of Appointment</a>
-        <a href="appointmentList.jsp">Appointment List</a>
-        <a href="LogoutServlet">Logout</a>
-    </div>
     <div class="layout">
-        <div class="profile-card">
-            <%-- Display error message if it exists --%>
-            <% String errorMessage = (String)request.getAttribute("errorMessage"); %>
-            <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
-                <div class="error-message">
-                    <%= errorMessage %>
-                </div>
-            <% } %>
-            <form action="RegisterServlet" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="candidateName" required>
-                <label for="ic_number">IC Number:</label>
-                <input type="text" id="ic_number" name="icNumber" required>
-                <label for="date_of_birth">Date of Birth:</label>
-                <input type="date" id="date_of_birth" name="DOB" required>
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
-                <label for="id">Candidate ID:</label>
-                <input type="text" id="id" name="candidateId" required>
-                <div class="button-group">
-                    <input type="reset" value="CLEAR">
-                    <input type="submit" value="CONFIRM">
-                </div>
-            </form>
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <a href="register.jsp" class="active"><i class="fas fa-user"></i> Candidate Registration</a>
+            <a href="information.jsp"><i class="fas fa-info-circle"></i> Candidate Information</a>
+            <a href="progress.jsp"><i class="fas fa-chart-line"></i> Candidate Progress</a>
+            <a href="progressRecord.jsp"><i class="fas fa-list-alt"></i> Progress Record</a>
+            <a href="appointment.jsp"><i class="fas fa-calendar-alt"></i> Calendar of Appointment</a>
+            <a href="appointmentList.jsp"><i class="fas fa-clipboard-list"></i> Appointment List</a>
+            <a href="LogoutServlet" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+        <div class="main-content">
+            <div class="profile-card">
+                <% String errorMessage = (String)request.getAttribute("errorMessage"); %>
+                <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
+                    <div class="error-message">
+                        <%= errorMessage %>
+                    </div>
+                <% } %>
+                <form action="RegisterServlet" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="candidateName" required>
+
+                    <label for="ic_number">IC Number:</label>
+                    <input type="text" id="ic_number" name="icNumber" required>
+
+                    <label for="date_of_birth">Date of Birth:</label>
+                    <input type="date" id="date_of_birth" name="DOB" required>
+
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="id">Candidate ID:</label>
+                    <input type="text" id="id" name="candidateId" required>
+
+                    <div class="button-group">
+                        <input type="reset" value="CLEAR">
+                        <input type="submit" value="CONFIRM">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
