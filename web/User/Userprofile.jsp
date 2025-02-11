@@ -1,4 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="javax.servlet.http.*, javax.servlet.*" %>
+<%@ page import="java.sql.*" %>
+<%
+    // Simulating a session check for a logged-in user
+    HttpSession session = request.getSession(false);
+    String username = (String) session.getAttribute("user"); // Assuming the username is stored in session
+    String userID = "";
+    String email = "";
+    String password = "";
+
+    if (username == null) {
+        response.sendRedirect("login.jsp"); // Redirect to login page if session is invalid
+    } else {
+        try {
+            // Database connection setup
+            String driver = "org.apache.derby.jdbc.ClientDriver";
+            String connectionString = "jdbc:derby://localhost:1527/Career;create=true;user=app;password=app";
+
+            Class.forName(driver);
+            Connection conn = DriverManager.getConnection(connectionString);
+
+            // Query to fetch user details
+            String query = "SELECT user_id, username, email, password FROM LOGIN WHERE username = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                userID = rs.getString("user_id");
+                email = rs.getString("email");
+                password = rs.getString("password");
+            }
+
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +46,7 @@
     <title>Career Pathway Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* Same CSS styling as provided in your HTML file */
+        /* CSS styles (as in your provided code) */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -30,6 +69,10 @@
         .header h1 {
             font-size: 24px;
         }
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
         .layout {
             display: flex;
             flex: 1;
@@ -41,6 +84,43 @@
             display: flex;
             flex-direction: column;
             padding: 20px 10px;
+        }
+        .sidebar h2 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .sidebar a i {
+            margin-right: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+            transform: scale(1.05);
+        }
+        .sidebar a.active {
+            background-color: #007bff;
+        }
+        .logout-btn {
+            margin-top: auto;
+            background-color: #dc3545;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
         }
         .main-content {
             display: flex;
@@ -81,26 +161,11 @@
         .profile-card th {
             background-color: #f8f9fa;
         }
-        .profile-card input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .profile-card input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .back-button {
+        .profile-card a {
             display: inline-block;
             margin-top: 20px;
-            text-decoration: none;
             color: #007bff;
-            font-size: 16px;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -108,8 +173,7 @@
     <div class="header">
         <h1>Career Pathway</h1>
         <div class="user-info">
-            <!-- Dynamically display username and user ID -->
-            <h1>Welcome, <%= session.getAttribute("username") %>, <%= session.getAttribute("userID") %></h1>
+            <h1>Welcome, <%= username %>, <%= userID %></h1>
         </div>
     </div>
 
@@ -117,10 +181,10 @@
         <div class="sidebar">
             <h2>Menu</h2>
             <a href="UserProfile.jsp" class="active"><i class="fas fa-user"></i> Profile</a>
-            <a href="BookAppointment.jsp"><i class="fas fa-taxi"></i> Book Appointment</a>
+            <a href="#"><i class="fas fa-taxi"></i> Book Appointment</a>
             <a href="ApplicationProgress.jsp"><i class="fas fa-history"></i> Application Progress</a>
-            <form action="LogoutServlet" method="post">
-                <button type="submit" class="logout-btn">Log Out</button>
+            <form action="LogoutServlet" method="post" style="margin-top: auto;">
+                <button class="logout-btn" type="submit">Log Out</button>
             </form>
         </div>
 
@@ -135,14 +199,13 @@
                         <th>Password</th>
                     </tr>
                     <tr>
-                        <!-- Dynamically fetch user details -->
-                        <td><%= session.getAttribute("userID") %></td>
-                        <td><%= session.getAttribute("username") %></td>
-                        <td><%= session.getAttribute("email") %></td>
-                        <td>********</td> <!-- Mask password -->
+                        <td><%= userID %></td>
+                        <td><%= username %></td>
+                        <td><%= email %></td>
+                        <td><%= password %></td>
                     </tr>
                 </table>
-                <a href="EditUserProfile.jsp">Edit Profile</a>
+                <a href="UserEditProfile.jsp">Edit Profile</a>
             </div>
         </div>
     </div>
