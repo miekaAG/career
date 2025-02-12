@@ -66,7 +66,8 @@
 
         .time {
             margin-top: 20px;
-            font-size: 1em;
+            font-size: 1.2em;
+            font-weight: bold;
             color: #ecf0f1; /* Light Gray */
         }
     </style>
@@ -76,6 +77,25 @@
             if (urlParams.get('logout') === 'true') {
                 alert('Successfully logged out');
             }
+
+            function updateClock() {
+                var now = new Date();
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+                var amPm = hours >= 12 ? 'PM' : 'AM';
+
+                hours = hours % 12 || 12; // Convert to 12-hour format
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                var timeString = hours + ":" + minutes + ":" + seconds + " " + amPm;
+                document.getElementById("clock").innerText = timeString;
+            }
+
+            // Update clock every second
+            updateClock();
+            setInterval(updateClock, 1000);
         }
     </script>
 </head>  
@@ -87,6 +107,6 @@
         <a href="signup.jsp" class="button">Sign Up</a>
         <a href="login.jsp" class="button">Login</a>  
     </div>
-    <div class="time">Current Time: <%= java.util.Calendar.getInstance().getTime() %></div>
+    <div class="time">Current Time: <span id="clock"></span></div>
 </body>  
 </html>
