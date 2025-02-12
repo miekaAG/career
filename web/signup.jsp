@@ -121,11 +121,6 @@
             </div>
             
             <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-            </div>
-            
-            <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
@@ -134,15 +129,6 @@
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
                 <p class="error" id="passwordError">Passwords do not match.</p>
-            </div>
-
-            <div class="form-group">
-                <label for="userType">Type:</label>
-                <select id="userType" name="userType" required>
-                    <option value="">--Select--</option>
-                    <option value="User">User</option>
-                    <option value="Driver">Admin</option>
-                </select>
             </div>
 
             <button type="submit">Sign Up</button>
