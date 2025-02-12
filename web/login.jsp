@@ -119,11 +119,6 @@
         <h2>CAREER PATHWAY</h2>
         <form action="LoginServlet" method="post">
             <div class="form-group">
-                <label for="type">Type</label>
-                User<input type="radio" name="Type" value="User" />
-                Admin<input type="radio" name="Type" value="Admin" />
-            </div>
-            <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
